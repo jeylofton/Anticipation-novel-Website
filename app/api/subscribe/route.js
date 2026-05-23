@@ -1,19 +1,18 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { subscribeSchema } from "@/lib/validation";
 import { rateLimit } from "@/lib/rate-limit";
 import { mailerlite } from "@/lib/email/mailerlite";
-import type { EmailProvider } from "@/lib/email/types";
 
 // To switch ESPs, change this one import/binding.
-const provider: EmailProvider = mailerlite;
+const provider = mailerlite;
 
-function clientIp(req: NextRequest): string {
+function clientIp(req) {
   const fwd = req.headers.get("x-forwarded-for");
-  if (fwd) return fwd.split(",")[0]!.trim();
+  if (fwd) return fwd.split(",")[0].trim();
   return req.headers.get("x-real-ip") ?? "unknown";
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(req) {
   // Rate limit first — cheap rejection before parsing/network.
   if (!rateLimit(clientIp(req)).allowed) {
     return NextResponse.json(
@@ -22,7 +21,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  let body: unknown;
+  let body;
   try {
     body = await req.json();
   } catch {
@@ -49,10 +48,7 @@ export async function POST(req: NextRequest) {
   if (!result.ok) {
     // Log the internal detail server-side; never leak it to the client.
     console.error("[subscribe] provider error:", result.detail ?? result.error);
-    return NextResponse.json(
-      { ok: false, error: result.error },
-      { status: 502 },
-    );
+    return NextResponse.json({ ok: false, error: result.error }, { status: 502 });
   }
 
   return NextResponse.json({ ok: true });

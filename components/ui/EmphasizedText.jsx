@@ -2,10 +2,10 @@ import { Fragment } from "react";
 
 /**
  * Renders copy that uses {em} ... {/em} markers, highlighting the wrapped
- * phrases in wine. Keeps the highlight styling out of lib/copy.ts so Jey
+ * phrases in wine. Keeps the highlight styling out of lib/copy.js so Jey
  * edits plain text.
  */
-export function EmphasizedText({ text }: { text: string }) {
+export function EmphasizedText({ text }) {
   const parts = text.split(/(\{em\}.*?\{\/em\})/g);
   return (
     <>

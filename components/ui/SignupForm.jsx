@@ -3,20 +3,20 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { clientSchema, type ClientInput } from "@/lib/validation";
+import { clientSchema } from "@/lib/validation";
 import { invitation } from "@/lib/copy";
 import { track } from "@/lib/analytics";
 
 const EMAIL_INPUT_ID = "signup-email";
 
-export function SignupForm({ onSuccess }: { onSuccess: () => void }) {
-  const [serverError, setServerError] = useState<string | null>(null);
+export function SignupForm({ onSuccess }) {
+  const [serverError, setServerError] = useState(null);
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     setError,
-  } = useForm<ClientInput>({
+  } = useForm({
     resolver: zodResolver(clientSchema),
     mode: "onSubmit",
   });
@@ -27,15 +27,7 @@ export function SignupForm({ onSuccess }: { onSuccess: () => void }) {
     track("signup_submitted");
 
     const website =
-      (event?.target as HTMLFormElement | undefined)?.elements.namedItem(
-        "website",
-      ) instanceof HTMLInputElement
-        ? (
-            (event!.target as HTMLFormElement).elements.namedItem(
-              "website",
-            ) as HTMLInputElement
-          ).value
-        : "";
+      event?.target?.elements?.namedItem("website")?.value || "";
 
     try {
       const res = await fetch("/api/subscribe", {
@@ -43,7 +35,7 @@ export function SignupForm({ onSuccess }: { onSuccess: () => void }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: data.email, website }),
       });
-      const json: { ok: boolean; error?: string } = await res.json();
+      const json = await res.json();
 
       if (res.ok && json.ok) {
         track("signup_success");
@@ -71,13 +63,7 @@ export function SignupForm({ onSuccess }: { onSuccess: () => void }) {
       {/* Honeypot: hidden from users + assistive tech, bots fill it. */}
       <div aria-hidden className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
         <label htmlFor="website">Leave this field empty</label>
-        <input
-          id="website"
-          type="text"
-          tabIndex={-1}
-          autoComplete="off"
-          {...{ name: "website" }}
-        />
+        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
       <div className="flex flex-col gap-3 sm:flex-row">
