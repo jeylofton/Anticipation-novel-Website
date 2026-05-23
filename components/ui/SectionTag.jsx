@@ -4,13 +4,7 @@ import { cn } from "@/lib/utils";
  * The gold uppercase eyebrow with a leading hairline.
  * Used as the small label above section headlines.
  */
-export function SectionTag({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
+export function SectionTag({ children, className }) {
   return (
     <span
       className={cn(

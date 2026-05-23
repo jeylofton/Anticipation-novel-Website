@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { clientSchema, type ClientInput } from "@/lib/validation";
+import { clientSchema } from "@/lib/validation";
 import { invitation } from "@/lib/copy";
 import { track } from "@/lib/analytics";
 import { Button } from "./button";
@@ -11,14 +11,14 @@ import { Input } from "./input";
 
 const EMAIL_INPUT_ID = "signup-email";
 
-export function SignupForm({ onSuccess }: { onSuccess: () => void }) {
-  const [serverError, setServerError] = useState<string | null>(null);
+export function SignupForm({ onSuccess }) {
+  const [serverError, setServerError] = useState(null);
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     setError,
-  } = useForm<ClientInput>({
+  } = useForm({
     resolver: zodResolver(clientSchema),
     mode: "onSubmit",
   });
@@ -28,10 +28,8 @@ export function SignupForm({ onSuccess }: { onSuccess: () => void }) {
     setServerError(null);
     track("signup_submitted");
 
-    const form = event?.target as HTMLFormElement | undefined;
-    const websiteField = form?.elements.namedItem("website");
-    const website =
-      websiteField instanceof HTMLInputElement ? websiteField.value : "";
+    const websiteField = event?.target?.elements?.namedItem("website");
+    const website = websiteField ? websiteField.value : "";
 
     try {
       const res = await fetch("/api/subscribe", {
@@ -39,7 +37,7 @@ export function SignupForm({ onSuccess }: { onSuccess: () => void }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: data.email, website }),
       });
-      const json = (await res.json()) as { ok: boolean; error?: string };
+      const json = await res.json();
 
       if (res.ok && json.ok) {
         track("signup_success");
