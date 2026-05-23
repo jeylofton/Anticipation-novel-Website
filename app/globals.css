@@ -1,20 +1,89 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* ─── Brand design tokens (generate bg-*, text-*, font-*, animate-*, etc.) ─── */
+@theme {
+  --color-ink: #0a0e14;
+  --color-night: #141a23;
+  --color-night-2: #1a212c;
+  --color-copper: #b85042;
+  --color-ember: #d97757;
+  --color-ember-soft: #e09473;
+  --color-wine: #7d2020;
+  --color-wine-soft: #9c3531;
+  --color-bone: #e8e2d5;
+  --color-bone-2: #d4cdbd;
+  --color-smoke: #8a8478;
+  --color-gold: #c9a96e;
+
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+
+  --tracking-eyebrow: 0.32em;
+
+  --animate-hero-drift: hero-drift 30s ease-in-out infinite alternate;
+  --animate-scroll-pulse: scroll-pulse 2.4s ease-in-out infinite;
+  --animate-fade-up: fade-up 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes hero-drift {
+  0% { transform: scale(1.05); }
+  100% { transform: scale(1.1); }
+}
+@keyframes scroll-pulse {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── shadcn/ui token layer, mapped to the brand palette ─── */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
 
 :root {
-  --ink: #0a0e14;
-  --night: #141a23;
-  --night-2: #1a212c;
-  --copper: #b85042;
-  --ember: #d97757;
-  --ember-soft: #e09473;
-  --wine: #7d2020;
-  --wine-soft: #9c3531;
-  --bone: #e8e2d5;
-  --bone-2: #d4cdbd;
-  --smoke: #8a8478;
-  --gold: #c9a96e;
+  --radius: 0.5rem;
+  --background: #0a0e14;
+  --foreground: #e8e2d5;
+  --card: #1a212c;
+  --card-foreground: #e8e2d5;
+  --popover: #1a212c;
+  --popover-foreground: #e8e2d5;
+  --primary: #7d2020;
+  --primary-foreground: #e8e2d5;
+  --secondary: #141a23;
+  --secondary-foreground: #e8e2d5;
+  --muted: #1a212c;
+  --muted-foreground: #8a8478;
+  --accent: #c9a96e;
+  --accent-foreground: #0a0e14;
+  --destructive: #b85042;
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #7d2020;
 }
 
 @layer base {
@@ -23,8 +92,8 @@
   }
 
   body {
-    background-color: var(--ink);
-    color: var(--bone);
+    background-color: var(--color-ink);
+    color: var(--color-bone);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -43,7 +112,7 @@
 
   /* Visible focus rings everywhere, in wine */
   :focus-visible {
-    outline: 2px solid var(--wine);
+    outline: 2px solid var(--color-wine);
     outline-offset: 2px;
   }
 }

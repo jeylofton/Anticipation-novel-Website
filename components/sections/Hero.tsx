@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import { hero } from "@/lib/copy";
 import { BLUR_DATA_URL } from "@/lib/blur";
 
@@ -50,14 +51,7 @@ export function Hero() {
         className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 font-sans text-[10px] uppercase tracking-[0.3em] text-smoke no-underline motion-safe:animate-scroll-pulse"
       >
         {hero.scrollCue}
-        <svg width="14" height="22" viewBox="0 0 14 22" fill="none" aria-hidden>
-          <path
-            d="M7 1v18m0 0l-5-5m5 5l5-5"
-            stroke="currentColor"
-            strokeWidth="1.2"
-            strokeLinecap="round"
-          />
-        </svg>
+        <ChevronDown className="size-4" strokeWidth={1.2} aria-hidden />
       </a>
     </section>
   );

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { reveal } from "@/lib/copy";
 import { BLUR_DATA_URL } from "@/lib/blur";
 import { SectionTag } from "@/components/ui/SectionTag";
@@ -37,9 +38,10 @@ export function Reveal() {
           <CtaLink
             href="#invitation"
             location="reveal"
-            className="mt-8 inline-flex items-center gap-2 font-sans text-[13px] uppercase tracking-[0.18em] text-wine-soft no-underline transition-colors hover:text-bone focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-wine"
+            className="mt-8 inline-flex items-center gap-2 font-sans text-[13px] uppercase tracking-[0.18em] text-wine-soft no-underline transition-colors hover:text-bone focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-wine"
           >
-            {reveal.ctaLink} <span aria-hidden>→</span>
+            {reveal.ctaLink}
+            <ArrowRight className="size-4" aria-hidden />
           </CtaLink>
         </RevealOnScroll>
       </div>

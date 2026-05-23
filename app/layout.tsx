@@ -1,3 +1,4 @@
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import Script from "next/script";
 import { site } from "@/lib/copy";
@@ -21,7 +22,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://anticipation-novel.com";
 const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Anticipation — A Novel by Jey Lofton",
   description:
@@ -50,7 +51,7 @@ export const metadata = {
   alternates: { canonical: siteUrl },
 };
 
-export const viewport = {
+export const viewport: Viewport = {
   themeColor: "#0a0e14",
 };
 
@@ -68,7 +69,11 @@ const bookJsonLd = {
     "A psychological love story by Jey Lofton. He had eight weeks to say it. He spent them waiting.",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
       <head>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { lastDoor } from "@/lib/copy";
 import { BLUR_DATA_URL } from "@/lib/blur";
 import { track } from "@/lib/analytics";
+import { Button } from "@/components/ui/button";
 
 export function LastDoor() {
   function goToForm() {
@@ -39,13 +40,14 @@ export function LastDoor() {
           <br />
           <span className="italic text-wine">{lastDoor.headlineLine2}</span>
         </h2>
-        <button
+        <Button
           type="button"
+          variant="outline"
           onClick={goToForm}
-          className="mt-10 rounded-sm border border-wine bg-wine/10 px-8 py-4 font-sans text-[12px] font-semibold uppercase tracking-[0.2em] text-bone transition-colors hover:bg-wine hover:text-bone focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wine"
+          className="mt-10 h-auto rounded-sm px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.2em]"
         >
           {lastDoor.cta}
-        </button>
+        </Button>
       </div>
     </section>
   );

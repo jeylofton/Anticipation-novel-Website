@@ -12,5 +12,8 @@ export const subscribeSchema = z.object({
   website: z.string().optional().default(""),
 });
 
+export type SubscribeInput = z.infer<typeof subscribeSchema>;
+
 /** The client only needs to validate the visible field. */
 export const clientSchema = subscribeSchema.pick({ email: true });
+export type ClientInput = z.infer<typeof clientSchema>;

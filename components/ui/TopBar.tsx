@@ -1,6 +1,7 @@
 "use client";
 
 import { Wordmark } from "./Wordmark";
+import { Button } from "./button";
 import { nav } from "@/lib/copy";
 import { track } from "@/lib/analytics";
 
@@ -13,13 +14,18 @@ export function TopBar() {
           {nav.tagline}
         </span>
       </a>
-      <a
-        href="#invitation"
-        onClick={() => track("cta_clicked", { location: "topbar" })}
-        className="hidden rounded-sm border border-wine/70 px-4 py-2 font-sans text-[11px] uppercase tracking-[0.18em] text-bone-2 no-underline transition-colors hover:border-wine hover:bg-wine/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wine min-[480px]:inline-block"
+      <Button
+        asChild
+        variant="ghost"
+        className="hidden h-auto rounded-sm px-4 py-2 text-[11px] uppercase tracking-[0.18em] no-underline min-[480px]:inline-flex"
       >
-        {nav.cta}
-      </a>
+        <a
+          href="#invitation"
+          onClick={() => track("cta_clicked", { location: "topbar" })}
+        >
+          {nav.cta}
+        </a>
+      </Button>
     </header>
   );
 }

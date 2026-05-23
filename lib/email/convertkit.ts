@@ -1,10 +1,7 @@
+import type { EmailProvider, SubscribeResult, Subscriber } from "./types";
+
 /**
  * ConvertKit (Kit) adapter — kept as a reference for swapping ESPs.
- *
- * An email provider adapter is any object with an async `subscribe({ email })`
- * method that resolves to either { ok: true } or
- * { ok: false, error, detail? }. `error` is shown to the user; `detail` is
- * logged server-side only.
  *
  * Reads CONVERTKIT_API_KEY and CONVERTKIT_FORM_ID from the environment.
  * The Prologue PDF is delivered by ConvertKit's incentive email / Visual
@@ -13,15 +10,15 @@
 
 const API_BASE = "https://api.convertkit.com/v3";
 
-function getConfig() {
+function getConfig(): { apiKey: string; formId: string } | null {
   const apiKey = process.env.CONVERTKIT_API_KEY;
   const formId = process.env.CONVERTKIT_FORM_ID;
   if (!apiKey || !formId) return null;
   return { apiKey, formId };
 }
 
-export const convertkit = {
-  async subscribe({ email }) {
+export const convertkit: EmailProvider = {
+  async subscribe({ email }: Subscriber): Promise<SubscribeResult> {
     const config = getConfig();
     if (!config) {
       return {

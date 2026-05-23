@@ -1,3 +1,5 @@
+import type { EmailProvider, SubscribeResult, Subscriber } from "./types";
+
 /**
  * MailerLite adapter — hosted-form (JSONP) endpoint.
  *
@@ -13,20 +15,17 @@
  *
  * The Prologue PDF is delivered by the automation / autoresponder you attach to
  * this form inside MailerLite — we don't serve the PDF ourselves.
- *
- * An adapter is any object with an async `subscribe({ email })` method that
- * resolves to { ok: true } or { ok: false, error, detail? }.
  */
 
-function getConfig() {
+function getConfig(): { accountId: string; formId: string } | null {
   const accountId = process.env.MAILERLITE_ACCOUNT_ID;
   const formId = process.env.MAILERLITE_FORM_ID;
   if (!accountId || !formId) return null;
   return { accountId, formId };
 }
 
-export const mailerlite = {
-  async subscribe({ email }) {
+export const mailerlite: EmailProvider = {
+  async subscribe({ email }: Subscriber): Promise<SubscribeResult> {
     const config = getConfig();
     if (!config) {
       return {
@@ -54,9 +53,9 @@ export const mailerlite = {
       });
 
       const text = await res.text().catch(() => "");
-      let payload = null;
+      let payload: { success?: boolean } | null = null;
       try {
-        payload = text ? JSON.parse(text) : null;
+        payload = text ? (JSON.parse(text) as { success?: boolean }) : null;
       } catch {
         payload = null;
       }

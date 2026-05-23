@@ -3,20 +3,22 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { clientSchema } from "@/lib/validation";
+import { clientSchema, type ClientInput } from "@/lib/validation";
 import { invitation } from "@/lib/copy";
 import { track } from "@/lib/analytics";
+import { Button } from "./button";
+import { Input } from "./input";
 
 const EMAIL_INPUT_ID = "signup-email";
 
-export function SignupForm({ onSuccess }) {
-  const [serverError, setServerError] = useState(null);
+export function SignupForm({ onSuccess }: { onSuccess: () => void }) {
+  const [serverError, setServerError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     setError,
-  } = useForm({
+  } = useForm<ClientInput>({
     resolver: zodResolver(clientSchema),
     mode: "onSubmit",
   });
@@ -26,8 +28,10 @@ export function SignupForm({ onSuccess }) {
     setServerError(null);
     track("signup_submitted");
 
+    const form = event?.target as HTMLFormElement | undefined;
+    const websiteField = form?.elements.namedItem("website");
     const website =
-      event?.target?.elements?.namedItem("website")?.value || "";
+      websiteField instanceof HTMLInputElement ? websiteField.value : "";
 
     try {
       const res = await fetch("/api/subscribe", {
@@ -35,7 +39,7 @@ export function SignupForm({ onSuccess }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: data.email, website }),
       });
-      const json = await res.json();
+      const json = (await res.json()) as { ok: boolean; error?: string };
 
       if (res.ok && json.ok) {
         track("signup_success");
@@ -70,7 +74,7 @@ export function SignupForm({ onSuccess }) {
         <label htmlFor={EMAIL_INPUT_ID} className="sr-only">
           {invitation.emailLabel}
         </label>
-        <input
+        <Input
           id={EMAIL_INPUT_ID}
           type="email"
           inputMode="email"
@@ -78,16 +82,17 @@ export function SignupForm({ onSuccess }) {
           placeholder={invitation.emailPlaceholder}
           aria-invalid={fieldError ? true : undefined}
           aria-describedby={fieldError ? "signup-error" : undefined}
+          className="flex-1"
           {...register("email")}
-          className="flex-1 rounded-sm border border-white/15 bg-ink/60 px-4 py-3.5 font-sans text-[15px] text-bone placeholder:text-smoke/70 outline-none transition-colors focus:border-wine focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wine"
         />
-        <button
+        <Button
           type="submit"
+          size="lg"
           disabled={isSubmitting}
-          className="rounded-sm bg-wine px-6 py-3.5 font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-bone transition-colors hover:bg-wine-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bone disabled:cursor-not-allowed disabled:opacity-70"
+          className="text-[11px] font-semibold uppercase tracking-[0.18em]"
         >
           {isSubmitting ? invitation.sending : invitation.submit}
-        </button>
+        </Button>
       </div>
 
       <p

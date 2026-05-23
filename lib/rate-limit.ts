@@ -9,9 +9,9 @@
 const WINDOW_MS = 60_000;
 const MAX_REQUESTS = 5;
 
-const hits = new Map();
+const hits = new Map<string, number[]>();
 
-export function rateLimit(ip) {
+export function rateLimit(ip: string): { allowed: boolean } {
   const now = Date.now();
   const recent = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
 

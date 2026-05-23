@@ -1,18 +1,19 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { subscribeSchema } from "@/lib/validation";
 import { rateLimit } from "@/lib/rate-limit";
 import { mailerlite } from "@/lib/email/mailerlite";
+import type { EmailProvider } from "@/lib/email/types";
 
 // To switch ESPs, change this one import/binding.
-const provider = mailerlite;
+const provider: EmailProvider = mailerlite;
 
-function clientIp(req) {
+function clientIp(req: NextRequest): string {
   const fwd = req.headers.get("x-forwarded-for");
-  if (fwd) return fwd.split(",")[0].trim();
+  if (fwd) return fwd.split(",")[0]!.trim();
   return req.headers.get("x-real-ip") ?? "unknown";
 }
 
-export async function POST(req) {
+export async function POST(req: NextRequest) {
   // Rate limit first — cheap rejection before parsing/network.
   if (!rateLimit(clientIp(req)).allowed) {
     return NextResponse.json(
@@ -21,7 +22,7 @@ export async function POST(req) {
     );
   }
 
-  let body;
+  let body: unknown;
   try {
     body = await req.json();
   } catch {

@@ -10,7 +10,7 @@ export function Invitation() {
 
   return (
     <section id="invitation" className="bg-ink px-6 py-28 sm:py-36">
-      <div className="relative mx-auto max-w-card overflow-hidden rounded-md border border-white/10 bg-[linear-gradient(160deg,#1a212c,#141a23)] px-7 py-12 sm:px-12 sm:py-16">
+      <div className="relative mx-auto max-w-[560px] overflow-hidden rounded-md border border-white/10 bg-[linear-gradient(160deg,#1a212c,#141a23)] px-7 py-12 sm:px-12 sm:py-16">
         {/* 2px wine gradient line across the top */}
         <span
           aria-hidden
@@ -19,7 +19,7 @@ export function Invitation() {
 
         {done ? (
           <div className="text-center motion-safe:animate-fade-up">
-            <SectionTag className="!text-smoke">
+            <SectionTag className="text-smoke">
               {invitation.success.eyebrow}
             </SectionTag>
             <h2 className="mt-6 font-serif text-[clamp(28px,4vw,40px)] italic leading-tight text-bone">

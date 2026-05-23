@@ -5,7 +5,7 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 export function Question() {
   return (
     <section id="prologue" className="bg-ink px-6 py-32 sm:py-40">
-      <RevealOnScroll className="mx-auto max-w-prose text-center">
+      <RevealOnScroll className="mx-auto max-w-[640px] text-center">
         <p className="font-sans text-[11px] uppercase tracking-eyebrow text-gold">
           {question.eyebrow}
         </p>
