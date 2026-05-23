@@ -16,7 +16,7 @@ export function TopBar() {
       <a
         href="#invitation"
         onClick={() => track("cta_clicked", { location: "topbar" })}
-        className="hidden rounded-sm border border-ember/60 px-4 py-2 font-sans text-[11px] uppercase tracking-[0.18em] text-ember no-underline transition-colors hover:border-ember hover:bg-ember/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember min-[480px]:inline-block"
+        className="hidden rounded-sm border border-wine/70 px-4 py-2 font-sans text-[11px] uppercase tracking-[0.18em] text-bone-2 no-underline transition-colors hover:border-wine hover:bg-wine/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wine min-[480px]:inline-block"
       >
         {nav.cta}
       </a>

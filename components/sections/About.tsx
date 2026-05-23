@@ -8,7 +8,7 @@ export function About() {
     <section className="bg-night-2/40 px-6 py-28 sm:py-36">
       <RevealOnScroll className="mx-auto grid max-w-4xl items-center gap-12 md:grid-cols-[260px_1fr]">
         <div className="mx-auto w-full max-w-[260px]">
-          <div className="relative aspect-square overflow-hidden rounded-full shadow-[0_20px_60px_-20px_rgba(217,119,87,0.15)]">
+          <div className="relative aspect-square overflow-hidden rounded-full shadow-[0_20px_60px_-20px_rgba(125,32,32,0.22)]">
             <Image
               src="/images/author.jpg"
               alt={about.portraitAlt}
@@ -29,7 +29,7 @@ export function About() {
               <p key={i}>{para}</p>
             ))}
           </div>
-          <p className="mt-6 font-serif text-xl italic text-ember">
+          <p className="mt-6 font-serif text-xl italic text-wine-soft">
             {about.signature}
           </p>
         </div>

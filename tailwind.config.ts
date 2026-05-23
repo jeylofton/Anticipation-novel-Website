@@ -15,6 +15,8 @@ const config: Config = {
         copper: "#b85042",
         ember: "#d97757",
         "ember-soft": "#e09473",
+        wine: "#7d2020",
+        "wine-soft": "#9c3531",
         bone: "#e8e2d5",
         "bone-2": "#d4cdbd",
         smoke: "#8a8478",

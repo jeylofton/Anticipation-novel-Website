@@ -11,9 +11,9 @@ export function SectionTag({
 }) {
   return (
     <span
-      className={`inline-flex items-center gap-3.5 font-sans text-[11px] font-medium uppercase tracking-eyebrow text-ember ${className}`}
+      className={`inline-flex items-center gap-3.5 font-sans text-[11px] font-medium uppercase tracking-eyebrow text-gold ${className}`}
     >
-      <span aria-hidden className="h-px w-8 bg-ember" />
+      <span aria-hidden className="h-px w-8 bg-gold" />
       {children}
     </span>
   );

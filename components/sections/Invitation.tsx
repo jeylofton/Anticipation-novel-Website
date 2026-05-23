@@ -11,10 +11,10 @@ export function Invitation() {
   return (
     <section id="invitation" className="bg-ink px-6 py-28 sm:py-36">
       <div className="relative mx-auto max-w-card overflow-hidden rounded-md border border-white/10 bg-[linear-gradient(160deg,#1a212c,#141a23)] px-7 py-12 sm:px-12 sm:py-16">
-        {/* 2px ember gradient line across the top */}
+        {/* 2px wine gradient line across the top */}
         <span
           aria-hidden
-          className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-ember to-transparent"
+          className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-wine to-transparent"
         />
 
         {done ? (
@@ -28,7 +28,7 @@ export function Invitation() {
             <p className="mt-6 font-serif text-lg leading-relaxed text-bone-2">
               {invitation.success.body}
             </p>
-            <p className="mt-8 font-serif text-xl italic text-ember">
+            <p className="mt-8 font-serif text-xl italic text-wine-soft">
               {invitation.success.signoff}
             </p>
           </div>

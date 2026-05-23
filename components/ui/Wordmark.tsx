@@ -1,7 +1,7 @@
 import { hero } from "@/lib/copy";
 
 /**
- * The "Antici" (roman bone) + "pation" (italic ember) split treatment.
+ * The "Antici" (roman bone) + "pation" (italic wine) split treatment.
  * Sizing is controlled entirely by the caller via className font-size.
  */
 export function Wordmark({
@@ -14,7 +14,7 @@ export function Wordmark({
   return (
     <Tag className={`font-serif font-medium leading-none ${className}`}>
       <span className="text-bone">{hero.titleRoman}</span>
-      <span className="italic text-ember">{hero.titleItalic}</span>
+      <span className="italic text-wine">{hero.titleItalic}</span>
     </Tag>
   );
 }

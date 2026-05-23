@@ -26,20 +26,20 @@ export function Hero() {
       </div>
 
       <div className="relative max-w-3xl">
-        <p className="flex items-center gap-4 font-sans text-[11px] font-medium uppercase tracking-eyebrow text-ember">
-          <span aria-hidden className="h-px w-8 bg-ember" />
+        <p className="flex items-center gap-4 font-sans text-[11px] font-medium uppercase tracking-eyebrow text-gold">
+          <span aria-hidden className="h-px w-8 bg-gold" />
           {hero.eyebrow}
         </p>
 
         <h1 className="mt-6 font-serif font-medium leading-[0.9] text-[clamp(64px,14vw,180px)]">
           <span className="text-bone">{hero.titleRoman}</span>
-          <span className="italic text-ember">{hero.titleItalic}</span>
+          <span className="italic text-wine">{hero.titleItalic}</span>
         </h1>
 
         <p className="mt-6 font-serif text-2xl leading-snug text-bone-2 sm:text-3xl">
           {hero.hookLine1}
           <br />
-          <span className="italic text-ember">{hero.hookLine2}</span>
+          <span className="italic text-wine">{hero.hookLine2}</span>
         </p>
       </div>
 

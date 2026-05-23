@@ -37,12 +37,12 @@ export function LastDoor() {
         <h2 className="font-serif text-[clamp(40px,7vw,84px)] font-medium leading-[0.95] text-bone">
           {lastDoor.headlineLine1}
           <br />
-          <span className="italic text-ember">{lastDoor.headlineLine2}</span>
+          <span className="italic text-wine">{lastDoor.headlineLine2}</span>
         </h2>
         <button
           type="button"
           onClick={goToForm}
-          className="mt-10 rounded-sm border border-ember px-8 py-4 font-sans text-[12px] font-semibold uppercase tracking-[0.2em] text-ember transition-colors hover:bg-ember hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
+          className="mt-10 rounded-sm border border-wine bg-wine/10 px-8 py-4 font-sans text-[12px] font-semibold uppercase tracking-[0.2em] text-bone transition-colors hover:bg-wine hover:text-bone focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wine"
         >
           {lastDoor.cta}
         </button>

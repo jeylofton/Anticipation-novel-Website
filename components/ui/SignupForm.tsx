@@ -93,12 +93,12 @@ export function SignupForm({ onSuccess }: { onSuccess: () => void }) {
           aria-invalid={fieldError ? true : undefined}
           aria-describedby={fieldError ? "signup-error" : undefined}
           {...register("email")}
-          className="flex-1 rounded-sm border border-white/15 bg-ink/60 px-4 py-3.5 font-sans text-[15px] text-bone placeholder:text-smoke/70 outline-none transition-colors focus:border-ember focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
+          className="flex-1 rounded-sm border border-white/15 bg-ink/60 px-4 py-3.5 font-sans text-[15px] text-bone placeholder:text-smoke/70 outline-none transition-colors focus:border-wine focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-wine"
         />
         <button
           type="submit"
           disabled={isSubmitting}
-          className="rounded-sm bg-ember px-6 py-3.5 font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-ink transition-colors hover:bg-ember-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bone disabled:cursor-not-allowed disabled:opacity-70"
+          className="rounded-sm bg-wine px-6 py-3.5 font-sans text-[11px] font-semibold uppercase tracking-[0.18em] text-bone transition-colors hover:bg-wine-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bone disabled:cursor-not-allowed disabled:opacity-70"
         >
           {isSubmitting ? invitation.sending : invitation.submit}
         </button>
