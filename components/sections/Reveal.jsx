@@ -13,7 +13,7 @@ export function Reveal() {
         {/* Image — bleeds into the text side on desktop */}
         <div className="relative h-[60vh] min-h-[420px] lg:h-[80vh]">
           <Image
-            src="/images/envelope.png"
+            src="/images/envelope.webp"
             alt={reveal.imageAlt}
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
