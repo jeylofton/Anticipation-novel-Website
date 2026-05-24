@@ -12,7 +12,7 @@ export function Hero() {
       {/* Full-bleed drifting background */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <Image
-          src="/images/balcony.webp"
+          src="/images/balcony.jpg"
           alt={hero.imageAlt}
           fill
           priority

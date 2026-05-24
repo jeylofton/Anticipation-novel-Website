@@ -10,7 +10,7 @@ export function About() {
         <div className="mx-auto w-full max-w-[260px]">
           <div className="relative aspect-square overflow-hidden rounded-full shadow-[0_20px_60px_-20px_rgba(125,32,32,0.22)]">
             <Image
-              src="/images/author.webp"
+              src="/images/author.jpeg"
               alt={about.portraitAlt}
               fill
               sizes="260px"

@@ -9,7 +9,7 @@ export function Divider() {
       className="relative h-[240px] w-full overflow-hidden bg-ink sm:h-[380px]"
     >
       <Image
-        src="/images/divider.webp"
+        src="/images/divider.jpg"
         alt={divider.imageAlt}
         fill
         sizes="100vw"

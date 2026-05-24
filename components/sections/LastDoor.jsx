@@ -23,7 +23,7 @@ export function LastDoor() {
     <section className="relative flex min-h-[100vh] min-h-[100dvh] items-center justify-center overflow-hidden px-6 text-center">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/ring.webp"
+          src="/images/ring.jpg"
           alt={lastDoor.imageAlt}
           fill
           sizes="100vw"
