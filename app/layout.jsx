@@ -18,17 +18,31 @@ const inter = Inter({
 });
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://anticipation-novel.com";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://anticipationnovel.com";
 const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Anticipation — A Novel by Jey Lofton",
+  title: "Anticipation by Jey Lofton | Literary Fiction Novel",
   description:
-    "A psychological love story by Jey Lofton. Winter 2026. He had eight weeks to say it. He spent them waiting. Read the Prologue and Chapter One.",
+    "Anticipation by Jey Lofton is a literary fiction novel about love, timing, regret, and the quiet decisions that change everything. Read the opening pages before release.",
+  keywords: [
+    "literary fiction novel",
+    "psychological romance novel",
+    "tragic love story",
+    "contemporary literary fiction",
+    "relationship drama novel",
+    "cinematic fiction",
+    "literary tragedy",
+    "Jey Lofton",
+    "Anticipation novel",
+  ],
+  authors: [{ name: "Jey Lofton" }],
+  creator: "Jey Lofton",
   openGraph: {
-    title: "Anticipation — A Psychological Love Story",
-    description: "He had eight weeks to say it. He spent them waiting.",
+    title: "Anticipation by Jey Lofton | A Literary Tragedy",
+    description:
+      "A literary fiction novel about love, timing, and regret. He had eight weeks to say it. He spent them waiting.",
     url: siteUrl,
     siteName: "Anticipation",
     images: [
@@ -36,15 +50,16 @@ export const metadata = {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Anticipation — A Novel by Jey Lofton",
+        alt: "Anticipation — a literary fiction novel by Jey Lofton",
       },
     ],
     type: "book",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anticipation — A Psychological Love Story",
-    description: "He had eight weeks to say it. He spent them waiting.",
+    title: "Anticipation by Jey Lofton | A Literary Tragedy",
+    description:
+      "A literary fiction novel about love, timing, and regret. He had eight weeks to say it. He spent them waiting.",
     images: ["/images/og-image.png"],
   },
   alternates: { canonical: siteUrl },
@@ -58,14 +73,27 @@ const bookJsonLd = {
   "@context": "https://schema.org",
   "@type": "Book",
   name: site.bookTitle,
-  author: { "@type": "Person", name: site.author },
-  genre: "Psychological Fiction",
+  author: {
+    "@type": "Person",
+    name: site.author,
+    jobTitle: "Filmmaker and Novelist",
+    description:
+      "Jey Lofton is a filmmaker and literary fiction author known for cinematic, psychologically restrained storytelling.",
+  },
+  genre: [
+    "Literary Fiction",
+    "Psychological Romance",
+    "Contemporary Literary Fiction",
+    "Relationship Drama",
+  ],
+  keywords:
+    "literary fiction novel, psychological romance, tragic love story, contemporary literary fiction, literary tragedy, cinematic fiction",
   inLanguage: "en",
   bookFormat: "https://schema.org/EBook",
   datePublished: "2026",
   url: siteUrl,
   description:
-    "A psychological love story by Jey Lofton. He had eight weeks to say it. He spent them waiting.",
+    "Anticipation by Jey Lofton is a literary fiction novel about love, timing, regret, and the quiet decisions that change everything.",
 };
 
 export default function RootLayout({ children }) {
