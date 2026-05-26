@@ -7,6 +7,7 @@ import { Reveal } from "@/components/sections/Reveal";
 import { Divider } from "@/components/sections/Divider";
 import { Invitation } from "@/components/sections/Invitation";
 import { About } from "@/components/sections/About";
+import { Faq } from "@/components/sections/Faq";
 import { LastDoor } from "@/components/sections/LastDoor";
 
 export default function Page() {
@@ -20,6 +21,7 @@ export default function Page() {
         <Divider />
         <Invitation />
         <About />
+        <Faq />
         <LastDoor />
       </main>
       <Footer />
