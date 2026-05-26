@@ -1,13 +1,5 @@
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://anticipationnovel.com";
+User-agent: *
+Allow: /
 
-export default function robots() {
-  return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
-    sitemap: `${siteUrl}/sitemap.xml`,
-    host: siteUrl,
-  };
-}
+Sitemap: https://anticipationnovel.com/sitemap.xml
+Host: https://anticipationnovel.com
