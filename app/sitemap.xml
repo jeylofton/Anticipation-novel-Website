@@ -1,14 +1,11 @@
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://anticipationnovel.com";
-
-// Next.js generates /sitemap.xml from this. Add new pages here as the site grows.
-export default function sitemap() {
-  return [
-    {
-      url: siteUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-  ];
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+>
+  <url>
+    <loc>https://anticipationnovel.com/</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
