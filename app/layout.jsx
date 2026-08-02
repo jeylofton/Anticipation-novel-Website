@@ -101,6 +101,11 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
       <head>
         <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3652873567892523"
+          crossOrigin="anonymous"
+        />
+        <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(bookJsonLd) }}
