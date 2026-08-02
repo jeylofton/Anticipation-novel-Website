@@ -19,7 +19,7 @@
     "clsx": "2.1.1",
     "framer-motion": "12.40.0",
     "lucide-react": "1.16.0",
-    "next": "16.2.6",
+    "next": "16.2.11",
     "react": "19.2.6",
     "react-dom": "19.2.6",
     "react-hook-form": "7.53.2",
@@ -31,7 +31,7 @@
     "@tailwindcss/postcss": "4.3.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
-    "postcss": "8.5.10",
+    "postcss": "8.5.18",
     "tailwindcss": "4.3.0"
   },
   "overrides": {
