@@ -31,10 +31,11 @@
     "@tailwindcss/postcss": "4.3.0",
     "eslint": "^10.8.0",
     "eslint-config-next": "16.2.6",
-    "postcss": "8.5.18",
+    "postcss": "8.5.25",
     "tailwindcss": "4.3.0"
   },
   "overrides": {
-    "postcss": "$postcss"
+    "postcss": "$postcss",
+    "sharp": "$sharp"
   }
 }
