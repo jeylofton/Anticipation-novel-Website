@@ -20,7 +20,7 @@ export function Faq() {
     <section id="faq" className="bg-ink px-6 py-28 sm:py-36">
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+        // Safe: faqJsonLd is built in this file, never from user input.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <RevealOnScroll className="mx-auto max-w-[680px]">
